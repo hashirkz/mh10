@@ -3,13 +3,13 @@ import pytz
 from datetime import datetime
 
 
-#"\n\nMidterm Exam Date: Tuesday Feb 21\nOn-line Quiz Date: Jan 30\nEssay Deadline: Wed Mar 22 by 5pm\nFinal Exam Date: Date, time and place announced by the university\nConference with TA between Feb 16 and Feb 24\nSupplemental Exam: May (if applicable)"
-
-#def parse_output_text(titles_dates_string):
-
-
 def events_generator(titles_dates_list):
-    # titles_dates_list is a list of tuples
+    """
+    Input: A list of tuples of either length 2 or 3. 
+           Tuple format: (str, datetime, datetime) or (str, datetime)
+    Output: None. 
+    This function creates/overwrites the all_events.ics file in the calendars folder.
+    """
 
     cal = Calendar()
 
@@ -38,11 +38,11 @@ def events_generator(titles_dates_list):
 # testing
 """
 timezone = pytz.timezone('US/Eastern')
-date1 = datetime(2023, 1, 29, 8, 30, 0, tzinfo=timezone)
-date2 = datetime(2023, 1, 30, 8, 30, 0, tzinfo=timezone)
-titles_dates = [("test 03", date1), ("test 04", date2)]
+date1 = datetime(2023, 1, 29, tzinfo=timezone)
+date2 = datetime(2023, 1, 30, tzinfo=timezone)
+date3 = datetime(2023, 1, 31, 8, 30, 0, tzinfo=timezone)
+date4 = datetime(2023, 2, 1, 8, 30, 0, tzinfo=timezone)
+titles_dates = [("test 06", date1), ("test 07", date2), ("test 08", date3, date4)]
 
 events_generator(titles_dates)
 """
-
-

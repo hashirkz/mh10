@@ -1,7 +1,4 @@
 discord.py==2.1.0
-cohere==3.2.3
 python-dotenv==0.20.0
-pyPDF2==3.0.1
-datefinder==0.7.3
-openai
-pdfminer.six
+openai==0.26.4
+pdfminer.six==20221105
