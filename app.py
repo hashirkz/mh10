@@ -39,11 +39,11 @@ async def on_message(message):
 
 @client.event
 async def on_ready():
-    await tree.sync(guild=discord.Object(id=1069019258505408582))
+    await tree.sync()
     print(f'discord bot running at {client}')
 
 #@bot.command(aliases=['get_events'])
-@tree.command(name="get_events", description="Create calendar events from a pdf!", guild=discord.Object(id=1069019258505408582))
+@tree.command(name="get_events", description="Create calendar events from a pdf!")
 async def get_calendar(interaction: discord.Interaction, pdf: discord.Attachment):
     #if ctx.message.attachments: attachments = ctx.message.attachments[0]
     await interaction.response.defer()
