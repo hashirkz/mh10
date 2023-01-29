@@ -73,6 +73,41 @@ async def get_calendar(interaction: discord.Interaction, pdf: discord.Attachment
         #await ctx.message.channel.send(f'unable to read {attachments}')
         await interaction.followup.send(f'unable to read {pdf}')
 
+@tree.command(name="summary", description="summarize the passed in document")
+async def get_summary(interaction: discord.Interaction, pdf: discord.Attachment):
+    #if ctx.message.attachments: attachments = ctx.message.attachments[0]
+    await interaction.response.defer()
+    await asyncio.sleep(delay=4)
+    try:
+        text = pdfminer_stuff.read_pdf_url(pdf)
+        splits = pdfminer_stuff.split_text(text)
+        response = ""
+        for text_split in splits:
+            resp = openai_model.get_response_summary(text_split)
+            response += resp + ' '
+        await interaction.followup.send(response)        
+        
+    except:
+        #await ctx.message.channel.send(f'unable to read {attachments}')
+        await interaction.followup.send(f'unable to read {pdf}')
+
+@tree.command(name="ask", description="ask any prompt to chat gpt")
+async def get_chat(interaction: discord.Interaction, prompt: str, pdf: discord.Attachment):
+    #if ctx.message.attachments: attachments = ctx.message.attachments[0]
+    await interaction.response.defer()
+    await asyncio.sleep(delay=4)
+    try:
+        text = pdfminer_stuff.read_pdf_url(pdf)
+        splits = pdfminer_stuff.split_text(text)
+        response = ""
+        for text_split in splits:
+            resp = openai_model.get_response_ask(prompt, text_split)
+            response += resp + ' '
+        await interaction.followup.send(response)        
+        
+    except:
+        #await ctx.message.channel.send(f'unable to read {attachments}')
+        await interaction.followup.send(f'unable to read {pdf}')
 
 # @tree.command()
 # async def create_event(ctx, arg_str):
@@ -85,5 +120,4 @@ async def get_calendar(interaction: discord.Interaction, pdf: discord.Attachment
 
 
 if __name__ == '__main__':
-    #bot.start()
     client.run(DISCORD_BOT_TOKEN)
