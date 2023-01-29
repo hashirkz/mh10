@@ -1,4 +1,5 @@
 import openai
+import discord
 import os
 
 OPENAI_API_TOKEN = os.getenv("OPENAI_API_KEY")

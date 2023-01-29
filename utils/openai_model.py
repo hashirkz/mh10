@@ -14,9 +14,8 @@ def get_response(pdf_text):
     """
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt="What are the important dates for midterms, quizes, homework, exams, or assignments from the following text? " + pdf_text + " give the response in the following format - Event Name:MM/DD/YYYY. Exlude times of day. Take note of start dates and end dates. \
-        Also provide the course code such as 'BIEN 340' at the top of the response - the course code is located at the beginning of the text.",
-        temperature=0.01,
+        prompt="What are the important dates for midterms, quizes, homework, exams, or assignments from the following text? " + pdf_text + " give the response in the following format - Event Name:MM/DD/YYYY. Exlude times of day. Take note of start dates and end dates. Make each event on a new line.",
+        temperature=0.05,
         max_tokens=200,
         logit_bias={"22622": 1 , "4354": 1, "39": 1, "54": 1, "28718": 1, "6433": 1, "8021": 1, "16747": 1, "40781": 1, "900": 1, "3705": 1, "3109": 1, "321": 1, "4507": 1 , "528": 1} 
     )

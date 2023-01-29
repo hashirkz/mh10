@@ -1,5 +1,5 @@
 from icalendar import Calendar, Event, vText
-import pytz
+#import pytz
 from datetime import datetime
 
 
@@ -46,3 +46,4 @@ titles_dates = [("test 06", date1), ("test 07", date2), ("test 08", date3, date4
 
 events_generator(titles_dates)
 """
+
