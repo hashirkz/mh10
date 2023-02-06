@@ -1,6 +1,5 @@
-from icalendar import Calendar, Event, vText
-#import pytz
-from datetime import datetime
+from icalendar import Calendar, Event
+import os
 
 
 def events_generator(titles_dates_list):
@@ -30,20 +29,7 @@ def events_generator(titles_dates_list):
         cal.add_component(event)
 
     directory = "./calendars/all_events.ics"
-    f = open(directory, 'wb')
-    f.write(cal.to_ical())
+    os.makedirs(os.path.dirname(directory), exist_ok=True)
+    with open(directory, 'wb') as f:
+        f.write(cal.to_ical())
     f.close()
-
-
-# testing
-"""
-timezone = pytz.timezone('US/Eastern')
-date1 = datetime(2023, 1, 29, tzinfo=timezone)
-date2 = datetime(2023, 1, 30, tzinfo=timezone)
-date3 = datetime(2023, 1, 31, 8, 30, 0, tzinfo=timezone)
-date4 = datetime(2023, 2, 1, 8, 30, 0, tzinfo=timezone)
-titles_dates = [("test 06", date1), ("test 07", date2), ("test 08", date3, date4)]
-
-events_generator(titles_dates)
-"""
-

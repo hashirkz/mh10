@@ -1,6 +1,5 @@
 from pdfminer.high_level import extract_text
 import re
-#import urllib3
 from io import BytesIO
 import requests
 
