@@ -1,7 +1,7 @@
-discord.py==2.1.0
 python-dotenv==0.20.0
 openai==0.26.4
 pdfminer.six==20221105
 discord-py-interactions==4.3.4
 icalendar==5.0.4
 requests==2.27.1
+interactions-files==1.1.5
